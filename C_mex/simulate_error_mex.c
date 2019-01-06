@@ -64,6 +64,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]){
 	a[1] = a[1] + b[1];
 	a[2] = a[2] + b[2];
 	
+    /*
     for (ii = 0; ii <= 2; ii ++){
         printf("%f \n",b[ii]);
     }    
@@ -71,7 +72,8 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]){
 	for (ii = 0; ii <= 2; ii ++){
         printf("%f \n",a[ii]);
     }    
-	
+	*/
+    
 	for( jj = 0; jj < RESPONSE_LENGTH; jj++){
 	
 		sum_y = 0;

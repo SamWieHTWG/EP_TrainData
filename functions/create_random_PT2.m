@@ -12,8 +12,6 @@ function [ num, denom, n_cont, d_cont] = create_random_PT2(Ts)
 pole1 = (rand-0.5) * 20;  % pole lays between -10 and 10
 pole2 = (rand-0.5) * 20;  % smallest time constant = 0.1 s = sufficient
 
-pole1 = -2;
-pole2 = 3;
 
 % calculation of transfer function of system
 d_cont = [1 -pole1+-pole2 -pole1*-pole2];

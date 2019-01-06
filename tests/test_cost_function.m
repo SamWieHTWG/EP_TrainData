@@ -11,7 +11,7 @@ cd(curr_path);
 % test functionality
 
 P = 0.1;
-I = 0.1;
+I = 0.2;
 
 Ts = 0.01;
 T = Ts;

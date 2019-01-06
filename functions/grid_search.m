@@ -22,10 +22,10 @@ for ii = index(1,:) % for all values of P
     
     for kk = index(2,:) % for all values of I
         
-        tic
-        J = f([ii,kk]);
-        toc
-        if J > J_best
+        
+        J = f(ii,kk);
+        
+        if J < J_best
             
             J_best = J;
             x_best = [ii, kk];     
