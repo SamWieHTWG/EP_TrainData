@@ -1,8 +1,0 @@
-gcc -ansi -pedantic -W -Wall -omyprog myprog.c
-gcc -ansi -pedantic -W -Wall -osimulate simulate.c
-gcc -ansi -pedantic -W -Wall -fopenmp -osimulate simulate.c
-
-
-
-./myprog
-

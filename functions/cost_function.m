@@ -11,15 +11,15 @@ function [ J ] = cost_function(P,I, num_p, den_p, Ts)
 
 
 %% calculation of controller transfer function from P, I
-D = 0;  % no D - part  to begin with, possibly later
 
-p1 = P+I*Ts/2+D/Ts;
-p2 = -P+I*Ts/2-2*D/Ts;
-p3 = D/Ts;
+p1 = P;
+p2 = -P+I*Ts;
 
-c_num = [p1 p2 p3];
-c_den = [1 -1 0];
+num_c = [p1 p2];
+den_c = [1 -1];
 
+
+J = simulate_error_mex(single(num_c),single(den_c),single(num_p),single(den_p));
 
 
 end

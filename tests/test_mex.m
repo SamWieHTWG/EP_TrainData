@@ -1,6 +1,13 @@
 
 close all
 
+% get pahts
+curr_path = pwd;
+cd ..
+folder = pwd;
+addpath(genpath(folder));
+cd(curr_path);
+
 % test speed
 tic
 

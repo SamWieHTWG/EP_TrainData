@@ -16,14 +16,14 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]){
     
     
 	#define SETPOINT 		1.0
-	#define RESPONSE_LENGTH 20
+	#define RESPONSE_LENGTH 10000
 	
 	double error = 0;
 		
-	float a [4] = { 0, 0, 0, 0 };
-	float b [4] = { 0, 0, 0 };
+	float a [3] = { 0, 0, 0 };
+	float b [3] = { 0, 0, 0 };
 	
-	float y_d [4] = { 0, 0, 0, 0 };
+	float y_d [3] = { 0, 0, 0 };
 	float u_d [3] = { 0, 0, 0 };
 	float sum_y = 0;
 	float sum_u = 0;
@@ -54,21 +54,28 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]){
 	b[1] = b_c[0] * b_p[1] + b_c[1] * b_p[0];
 	b[2] = b_c[1] * b_p[1];
 	
-	a[0] = a_c[0] + a_p[0];
-	a[1] = a_c[1] + a_p[1] + a_c[0] * a_p[0];
-	a[2] = a_c[0] * a_p[1] + a_c[1] * a_p[0];
-	a[3] = a_c[1] * a_p[1];
+	/* den of cont always seen as 1 -1 */
+	a[0] = a_p[0] - 1;
+	a[1] = a_p[1] - a_p[0];
+	a[2] = -a_p[1];
+
 	
-	a[1] = a[1] + b[0];
-	a[2] = a[2] + b[1];
-	a[3] = a[3] + b[2];
+	a[0] = a[0] + b[0];
+	a[1] = a[1] + b[1];
+	a[2] = a[2] + b[2];
 	
+    for (ii = 0; ii <= 2; ii ++){
+        printf("%f \n",b[ii]);
+    }    
 	
+	for (ii = 0; ii <= 2; ii ++){
+        printf("%f \n",a[ii]);
+    }    
 	
 	for( jj = 0; jj < RESPONSE_LENGTH; jj++){
 	
 		sum_y = 0;
-		for( ii = 0; ii < 4; ii++){
+		for( ii = 0; ii < 3; ii++){
 			sum_y = sum_y + -1 * a[ii]*y_d[ii];
 		}
 		
@@ -79,7 +86,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]){
 		
 		
 		y = sum_y + sum_u;
-        printf("%f \n", y);
+       
             
 		for(ii = 2; ii>=0; ii--){
 			
