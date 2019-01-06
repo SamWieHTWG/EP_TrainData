@@ -12,10 +12,10 @@ close all
 actual_path = pwd;
 
 % add function directory
-addpath([actual_path '/functions'])
+addpath([actual_path '\functions'])
 
 % add data directory
-addpath([actual_path '/data'])
+addpath([actual_path '\data'])
 
 %% initialize parameter
 Ts = 0.01;
@@ -24,7 +24,7 @@ Ts = 0.01;
 while(1)
     
     % get random PT-2 data
-    [ num, denom, n_cont, d_cont] = create_random_PT2(Ts);
+    [ num, denom, n_cont, d_cont] = create_random_PT2(Ts)
     
     
 end    
