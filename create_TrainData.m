@@ -17,6 +17,9 @@ addpath([actual_path '/functions'])
 % add data directory
 addpath([actual_path '/data'])
 
+% add C Code directory
+addpath([actual_path '/C_mex'])
+
 %% initialize parameter
 Ts = 0.01;
 
@@ -25,6 +28,8 @@ while(1)
     
     % get random PT-2 data
     [ num, denom, n_cont, d_cont] = create_random_PT2(Ts);
+    
+    % create function handle for cost function
     
     
 end    

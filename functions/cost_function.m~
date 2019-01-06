@@ -1,0 +1,14 @@
+function [ J ] = cost_function(P,I, num_p, den_p)
+
+%% This function evaluates a given set of control parameters (P,I)
+%% for a given PT-2 plant
+
+%
+
+
+
+
+
+
+end
+
