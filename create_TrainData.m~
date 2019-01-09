@@ -27,13 +27,14 @@ Ts = 0.01;
 
 % optimization parameters
 lb_P = 1E-4;
-ub_P = 50;
+ub_P = 100;
 lb_I = 0;
-ub_I = 100;
-grid_samples = 700; % grid search duration for 100*100 values about 1 sec.
+ub_I = 200;
+grid_samples = 500; % grid search duration for 100*100 values about 1 sec.
+% good value = 700
 
-
-
+%% load up to now - data
+prev_data = load('data,mat'
 
 %% start endless creation loop
 while(1)
@@ -55,6 +56,8 @@ while(1)
         
         
     end
+    
+    
     %% get optimal PI - parameters
         
     % create function handle for cost function
@@ -62,11 +65,22 @@ while(1)
     
     % grid search
     tic
-    [x_best, J_best] = grid_search(fun_handle, lb_I, ub_I, lb_P, ub_P, grid_samples)
+    [x_best_GS, J_best] = grid_search(fun_handle, lb_I, ub_I, lb_P, ub_P, grid_samples)
     toc
     
-    % Nelder Mead 
+    if x_best_GS == zeros(2,1)
+        
+        disp('Grid Search not succesful');
+        % -> don't save / do nothing
+        
+    else
+        
+        % Nelder Mead Optimization to improve result
+        [x_best] = optimize_Nelder_Mead(x_best_GS,fun_handle);
+        
+    end    
     
+   
     
     break 
 end    

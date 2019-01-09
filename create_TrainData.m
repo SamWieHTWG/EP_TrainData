@@ -30,10 +30,12 @@ lb_P = 1E-4;
 ub_P = 100;
 lb_I = 0;
 ub_I = 200;
-grid_samples = 500; % grid search duration for 100*100 values about 1 sec.
+grid_samples = 600; % grid search duration for 100*100 values about 1 sec.
 % good value = 700
 
-
+%% load up to now - data
+prev_data = load('data.mat');
+data = prev_data.data;
 
 %% start endless creation loop
 while(1)
@@ -77,10 +79,15 @@ while(1)
         % Nelder Mead Optimization to improve result
         [x_best] = optimize_Nelder_Mead(x_best_GS,fun_handle);
         
+        %append new result to data
+        data = [data; x_best(1), x_best(2), n_cont, d_cont];
+        
+        % save data
+        save('data/data.mat','data');
     end    
     
    
     
-    break 
+    %break 
 end    
 
