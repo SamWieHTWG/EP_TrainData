@@ -5,7 +5,7 @@ close all
 tic
 
 for ii = 1:10000
-   %simulate_error_mex(single([0.1 0.1]),single([-1 0]),single([1 0]),single([-0.3 -0.01]));
+   simulate_error_mex(single([0.1 0.1]),single([-1 0]),single([1 0]),single([-0.3 -0.01]));
 
 end
 

@@ -74,7 +74,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]){
     }    
 	*/
     
-	for( jj = 0; jj < RESPONSE_LENGTH; jj++){
+	for( jj = 0; jj < RESPONSE_LENGTH; jj++) {
 	
 		sum_y = 0;
 		for( ii = 0; ii < 3; ii++){

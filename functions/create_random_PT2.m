@@ -32,7 +32,7 @@ end
 
 
 
-% calculation of dc gain and normalize numeartor
+% calculation of dc gain and normalize numerator
 dc_gain = n_cont(2) / d_cont(3);    
 n_cont = n_cont / dc_gain;
 

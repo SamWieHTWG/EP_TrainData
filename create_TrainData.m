@@ -1,7 +1,7 @@
 %% This program is written to create Training Data for the EP Project
 
 % author: Samuel Wiertz, wiertzsamuel@gmail.com
-% date: 16.12.2018
+% date: 16.11.2018
 
 close all
 
@@ -27,15 +27,17 @@ Ts = 0.01;
 
 % optimization parameters
 lb_P = 1E-4;
-ub_P = 100;
+ub_P = 400;
 lb_I = 0;
-ub_I = 200;
-grid_samples = 600; % grid search duration for 100*100 values about 1 sec.
+ub_I = 300;
+grid_samples = 700; % grid search duration for 100*100 values about 1 sec.
 % good value = 700
 
 %% load up to now - data
 prev_data = load('data.mat');
+prev_no_cont = load('no_cont');
 data = prev_data.data;
+no_cont = prev_no_cont.no_cont;
 
 %% start endless creation loop
 while(1)
@@ -73,6 +75,10 @@ while(1)
         
         disp('Grid Search not succesful');
         % -> don't save / do nothing
+        
+        % save parameters for non-stableizable plant 
+        no_cont =[ no_cont; n_cont, d_cont];
+        save('data/no_cont.mat','no_cont');
         
     else
         
