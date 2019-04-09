@@ -10,7 +10,7 @@ function [ num, denom, n_cont, d_cont] = create_random_PT2(Ts)
 %         n_cont, d_cont = continous plant values
 
 randnum = rand();
-if randnum > 0.5 % with probability = 0.5 use a complex pole pair
+if randnum < 0.9 % with probability = 0.5 use a complex pole pair
     
     % poles: p1 = real + j * imag , p2 = real - j * imag 
     
